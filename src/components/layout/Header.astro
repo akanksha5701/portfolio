@@ -4,6 +4,7 @@ import ThemeIcon from "../ui/ThemeIcon.astro";
 import Social from "../ui/Social.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
+import Logo from "../../icons/logo.svg";
 
 const [staticData] = await getCollection("staticData");
 const { github, githubIconName, linkedin, linkedinIconName } = staticData.data;
@@ -15,7 +16,7 @@ const routes = ["/", "/portfolio", "/about-me"];
 const isActiveRoute = routes.includes(currentPath);
 
 const navItems = isActiveRoute
-  ? ["home", "experience", "projects", "about", "blog"]
+  ? ["home", "experience", "projects", "about"]
   : ["home", "blog", "about"]; // Change the items
 ---
 
@@ -27,13 +28,9 @@ const navItems = isActiveRoute
   <div
     class="relative mx-auto flex max-w-7xl flex-row items-center justify-between max-xl:px-6"
   >
-    <a href="/" aria-label="Go to home">
-      <Icon
-        name="logo"
-        class="h-6 cursor-pointer transition-all hover:text-mint-300"
-        aria-hidden="true"
-      />
-    </a>
+    <a href="/" aria-label="Return to homepage" class="flex items-center gap-2">
+  <Logo class="h-8 w-auto" aria-hidden="true" />
+</a>
 
     <Navigation items={navItems} />
 
